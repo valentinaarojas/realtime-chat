@@ -2,6 +2,8 @@
 const express = require("express");
 // Import Cors so that we can call this server from any other origin
 const cors = require("cors");
+// Import Axios for making HTTP requests
+const { default: axios} = require("axios");
 
 // Following lines of code calls server from any origin
 const app = express();
@@ -22,10 +24,10 @@ app.post("/authenticate", async (req, res) => {
         // saved to their account.
         'https://api.chatengine.io/users/',
         // Passes in required data that endpoint needs
-        {username: username, secret: username, first_name: username},
+        { username: username, secret: username, first_name: username },
         // Private key allows to create/destroy users
-        {headers: {"private-key": "84f0bdbe-331c-4ce5-afab-194ed8187eb1"}}
-    )
+        { headers: { "private-key": "28f3d598-8d03-4eba-bae4-1c1ee115f1d3" } }
+    );
     // Assuming API call goes through, the response from this API call will
     // return the status of API call and data within it
     return res.status(r.status).json(r.data)
